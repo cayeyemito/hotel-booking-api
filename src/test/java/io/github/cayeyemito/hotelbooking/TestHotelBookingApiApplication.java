@@ -1,6 +1,8 @@
-package io.github.cayeyemito.hotel_booking_api;
+package io.github.cayeyemito.hotelbooking;
 
 import org.springframework.boot.SpringApplication;
+
+import io.github.cayeyemito.hotelbooking.HotelBookingApiApplication;
 
 public class TestHotelBookingApiApplication {
 

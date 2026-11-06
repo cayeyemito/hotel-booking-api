@@ -1,4 +1,4 @@
-package io.github.cayeyemito.hotel_booking_api;
+package io.github.cayeyemito.hotelbooking;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

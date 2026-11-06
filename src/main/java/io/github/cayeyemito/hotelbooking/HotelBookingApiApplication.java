@@ -1,4 +1,4 @@
-package io.github.cayeyemito.hotel_booking_api;
+package io.github.cayeyemito.hotelbooking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
