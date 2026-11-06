@@ -1,3 +1,6 @@
 spring:
   application:
     name: hotel-booking-api
+  flyway:
+    # Un fichero de migración mal nombrado debe romper el arranque, no ignorarse.
+    validate-migration-naming: true
