@@ -4,3 +4,9 @@ spring:
   flyway:
     # Un fichero de migración mal nombrado debe romper el arranque, no ignorarse.
     validate-migration-naming: true
+  jpa:
+    hibernate:
+      # Las tablas las crea Flyway; Hibernate solo comprueba que las entidades encajan.
+      ddl-auto: validate
+    open-in-view: false
+    
