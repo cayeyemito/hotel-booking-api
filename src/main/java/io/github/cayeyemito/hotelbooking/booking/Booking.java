@@ -25,7 +25,7 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "room_id")
     private Room room;
@@ -58,6 +58,10 @@ public class Booking {
         this.guests = guests;
         this.totalPrice = totalPrice;
         this.status = BookingStatus.CONFIRMED;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Room getRoom() {
