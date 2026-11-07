@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/bookings")
 public class BookingController {
@@ -19,7 +21,7 @@ public class BookingController {
     }
 
     @PostMapping
-    public ResponseEntity<BookingResponse> create(@RequestBody CreateBookingRequest request) {
+    public ResponseEntity<BookingResponse> create(@Valid @RequestBody CreateBookingRequest request) {
         Booking booking = bookingService.create(request);
         BookingResponse response = BookingResponse.from(booking);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
