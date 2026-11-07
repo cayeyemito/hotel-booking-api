@@ -29,7 +29,7 @@ class BookingRepositoryTest {
         @Test
         void rejectsOverlappingConfirmedBookingsForTheSameRoom() {
                 Room room = roomRepository.save(
-                                new Room("101", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T1", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 bookingRepository.saveAndFlush(new Booking(room, "Ana", "ana@example.com",
                                 LocalDate.of(2027, 3, 10), LocalDate.of(2027, 3, 14), (short) 2,
                                 new BigDecimal("360.00")));
@@ -45,7 +45,7 @@ class BookingRepositoryTest {
         @Test
         void allowsBookingThatStartsOnTheCheckOutDay() {
                 Room room = roomRepository.save(
-                                new Room("101", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T1", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 bookingRepository.saveAndFlush(new Booking(room, "Ana", "ana@example.com",
                                 LocalDate.of(2027, 3, 10), LocalDate.of(2027, 3, 14), (short) 2,
                                 new BigDecimal("360.00")));
@@ -58,7 +58,7 @@ class BookingRepositoryTest {
         @Test
         void cancelledBookingDoesNotBlockTheRoom() {
                 Room room = roomRepository.save(
-                                new Room("101", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T1", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 Booking cancelled = bookingRepository.saveAndFlush(new Booking(room, "Ana", "ana@example.com",
                                 LocalDate.of(2027, 3, 10), LocalDate.of(2027, 3, 14), (short) 2,
                                 new BigDecimal("360.00")));
@@ -73,9 +73,9 @@ class BookingRepositoryTest {
         @Test
         void allowsSameDatesInDifferentRooms() {
                 Room room1 = roomRepository.save(
-                                new Room("101", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T1", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 Room room2 = roomRepository.save(
-                                new Room("102", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T2", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 bookingRepository.saveAndFlush(new Booking(room1, "Ana", "ana@example.com",
                                 LocalDate.of(2027, 3, 10), LocalDate.of(2027, 3, 14), (short) 2,
                                 new BigDecimal("360.00")));
@@ -88,7 +88,7 @@ class BookingRepositoryTest {
         @Test
         void findsOverlappingConfirmedBooking() {
                 Room room = roomRepository.save(
-                                new Room("101", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T1", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 bookingRepository.saveAndFlush(new Booking(room, "Ana", "ana@example.com",
                                 LocalDate.of(2027, 3, 10), LocalDate.of(2027, 3, 14), (short) 2,
                                 new BigDecimal("360.00")));
@@ -101,7 +101,7 @@ class BookingRepositoryTest {
         @Test
         void doesNotFindBookingThatEndsOnTheRequestedCheckIn() {
                 Room room = roomRepository.save(
-                                new Room("101", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
+                                new Room("T1", RoomType.DOUBLE, (short) 2, new BigDecimal("90.00")));
                 bookingRepository.saveAndFlush(new Booking(room, "Ana", "ana@example.com",
                                 LocalDate.of(2027, 3, 10), LocalDate.of(2027, 3, 14), (short) 2,
                                 new BigDecimal("360.00")));
