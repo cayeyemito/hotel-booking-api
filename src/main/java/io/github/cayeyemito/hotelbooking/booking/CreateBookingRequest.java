@@ -14,5 +14,5 @@ public record CreateBookingRequest(
         @NotBlank @Email @Size(max = 255) String guestEmail,
         @NotNull LocalDate checkIn,
         @NotNull LocalDate checkOut,
-        @Positive short guests){
+        @Positive @NotNull Short guests) {
 }

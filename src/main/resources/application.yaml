@@ -9,7 +9,3 @@ spring:
       # Las tablas las crea Flyway; Hibernate solo comprueba que las entidades encajan.
       ddl-auto: validate
     open-in-view: false
-  mvc:
-    problemdetails:
-      enabled: true
-    
