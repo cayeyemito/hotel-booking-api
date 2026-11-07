@@ -25,6 +25,22 @@ public class BookingService {
         this.clock = clock;
     }
 
+    @Transactional(readOnly = true)
+    public Booking findById(Long id) {
+        return bookingRepository.findById(id)
+                .orElseThrow(() -> new BookingNotFoundException("No existe la reserva " + id));
+    }
+
+    @Transactional
+    public Booking cancel(Long id) {
+        Booking booking = findById(id);
+        if (booking.getStatus() == BookingStatus.CANCELLED) {
+            throw new InvalidBookingException("La reserva " + id + " ya está cancelada");
+        }
+        booking.cancel();
+        return booking;
+    }
+
     @Transactional
     public Booking create(CreateBookingRequest request) {
         Room room = roomRepository.findById(request.roomId())

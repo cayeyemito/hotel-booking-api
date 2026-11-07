@@ -9,6 +9,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import io.github.cayeyemito.hotelbooking.booking.BookingNotFoundException;
 import io.github.cayeyemito.hotelbooking.booking.InvalidBookingException;
 import io.github.cayeyemito.hotelbooking.booking.RoomUnavailableException;
 import io.github.cayeyemito.hotelbooking.room.RoomNotFoundException;
@@ -37,5 +38,10 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleDataIntegrityViolation(DataIntegrityViolationException ex) {
         log.warn("Violación de integridad de datos", ex);
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, "La habitación ya está reservada para esas fechas");
+    }
+
+    @ExceptionHandler (BookingNotFoundException.class)
+    public ProblemDetail handleBookingNotFound(BookingNotFoundException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 }
